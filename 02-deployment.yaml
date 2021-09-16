@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kublab-deployment
+  namespace: kublab
+  labels:
+    app: lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab
+  template:
+    metadata:
+      labels:
+        app: lab
+    spec:
+      containers:
+        - name: lab
+          image: stefanhennings/assignment:0.0.1
+          imagePullPolicy: IfNotPresent
